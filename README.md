@@ -73,3 +73,54 @@ Ce cahier des charges définit les grandes lignes du projet pour le développeme
 ![Diagramme de classe amoudia](https://github.com/tchabana/amoudia_project/assets/122261458/1b132319-e6a9-48fa-bfe9-f6ad8787ed0d)
 
 
+1. **Personne:**
+    
+    - `id_personne` (clé primaire)
+    - `nom`
+    - `prenom` (facultatif)
+    - `adresse` (facultatif)
+    - `email`  (facultatif)
+    - `statut`  (client|fournisseur|client)
+    - `telephone`
+
+2. **Commande:**
+    
+    - `id_commande` (clé primaire)
+    - `date_commande`
+    - `montant_versé` (Somme totale des payement dejat effectué)
+    - `id_personne` (clé étrangère référençant Personne en tant que Utilisateur)
+    - `montant` (Somme de toute les ligne de commande)
+    - `etat_payement` (True|False)
+    
+3. **Achat:**
+
+    - `id_achat` (clé primaire)
+    - `id_personne` (clé étrangère référençant Personne en tant que Fourniseur)
+
+4. **Vente:**
+    
+    - `id_vente` (clé primaire)
+    - `id_personne` (clé étrangère référençant Personne en tant que client)
+
+5. **Paiement:**
+    
+    - `id_paiement` (clé primaire)
+    - `date_paiement`
+    - `montant_paiement`
+    - `id_commande` (clé étrangère référençant Commande)
+
+6. **LigneCommande:**
+    
+    - `id_commande` (clé étrangère référençant Commande)  }
+    - `id_produit` (clé étrangère référençant Produit)    }`````PK
+    - `quantite`
+    - `montant_ligne_cmd`
+    
+7. **Produit:**
+    
+    - `id_produit` (clé primaire)
+    - `nom_produit`
+    - `description`
+    - `prix_achat`
+    - `prix_vente`
+    - `qte_stock`
