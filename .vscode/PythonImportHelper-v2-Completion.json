@@ -33,6 +33,14 @@
         "documentation": {}
     },
     {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -46,6 +54,38 @@
         "description": "django.core.wsgi",
         "isExtraImport": true,
         "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
         "documentation": {}
     },
     {
@@ -98,7 +138,7 @@
         "kind": 5,
         "importPath": "amoudia_project.settings",
         "description": "amoudia_project.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n]",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'stock_app',",
         "detail": "amoudia_project.settings",
         "documentation": {}
     },
@@ -107,7 +147,7 @@
         "kind": 5,
         "importPath": "amoudia_project.settings",
         "description": "amoudia_project.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n]\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'stock_app',\n]\nMIDDLEWARE = [",
         "detail": "amoudia_project.settings",
         "documentation": {}
     },
@@ -235,6 +275,78 @@
         "description": "amoudia_project.wsgi",
         "peekOfCode": "application = get_wsgi_application()",
         "detail": "amoudia_project.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "StockAppConfig",
+        "kind": 6,
+        "importPath": "stock_app.apps",
+        "description": "stock_app.apps",
+        "peekOfCode": "class StockAppConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'stock_app'",
+        "detail": "stock_app.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Personne",
+        "kind": 6,
+        "importPath": "stock_app.models",
+        "description": "stock_app.models",
+        "peekOfCode": "class Personne(models.Model):\n    STATUT_CHOICES = [\n        ('client', 'Client'),\n        ('fournisseur', 'Fournisseur'),\n        ('utilisateur', 'Utilisateur'),\n    ]\n    id_personne = models.AutoField(primary_key=True)\n    nom = models.CharField(max_length=255)\n    prenom = models.CharField(max_length=255, blank=True, null=True)\n    adresse = models.TextField(blank=True, null=True)",
+        "detail": "stock_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Commande",
+        "kind": 6,
+        "importPath": "stock_app.models",
+        "description": "stock_app.models",
+        "peekOfCode": "class Commande(models.Model):\n    id_commande = models.AutoField(primary_key=True)\n    date_commande = models.DateField()\n    montant_versé = models.DecimalField(max_digits=10, decimal_places=2)\n    id_personne = models.ForeignKey(Personne, on_delete=models.CASCADE)\n    montant = models.DecimalField(max_digits=10, decimal_places=2)\n    etat_payement = models.BooleanField()\nclass Achat(Commande):\n    id_achat = models.AutoField(primary_key=True)\n    id_personne = models.ForeignKey(Personne, on_delete=models.CASCADE)",
+        "detail": "stock_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Achat",
+        "kind": 6,
+        "importPath": "stock_app.models",
+        "description": "stock_app.models",
+        "peekOfCode": "class Achat(Commande):\n    id_achat = models.AutoField(primary_key=True)\n    id_personne = models.ForeignKey(Personne, on_delete=models.CASCADE)\nclass Vente(Commande):\n    id_vente = models.AutoField(primary_key=True)\n    id_personne = models.ForeignKey(Personne, on_delete=models.CASCADE)\nclass Paiement(models.Model):\n    id_paiement = models.AutoField(primary_key=True)\n    date_paiement = models.DateField()\n    montant_paiement = models.DecimalField(max_digits=10, decimal_places=2)",
+        "detail": "stock_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Vente",
+        "kind": 6,
+        "importPath": "stock_app.models",
+        "description": "stock_app.models",
+        "peekOfCode": "class Vente(Commande):\n    id_vente = models.AutoField(primary_key=True)\n    id_personne = models.ForeignKey(Personne, on_delete=models.CASCADE)\nclass Paiement(models.Model):\n    id_paiement = models.AutoField(primary_key=True)\n    date_paiement = models.DateField()\n    montant_paiement = models.DecimalField(max_digits=10, decimal_places=2)\n    id_commande = models.ForeignKey(Commande, on_delete=models.CASCADE)\nclass LigneCommande(models.Model):\n    id_commande = models.ForeignKey(Commande, on_delete=models.CASCADE)",
+        "detail": "stock_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Paiement",
+        "kind": 6,
+        "importPath": "stock_app.models",
+        "description": "stock_app.models",
+        "peekOfCode": "class Paiement(models.Model):\n    id_paiement = models.AutoField(primary_key=True)\n    date_paiement = models.DateField()\n    montant_paiement = models.DecimalField(max_digits=10, decimal_places=2)\n    id_commande = models.ForeignKey(Commande, on_delete=models.CASCADE)\nclass LigneCommande(models.Model):\n    id_commande = models.ForeignKey(Commande, on_delete=models.CASCADE)\n    id_produit = models.ForeignKey('Produit', on_delete=models.CASCADE)\n    quantite = models.IntegerField()\n    montant_ligne_cmd = models.DecimalField(max_digits=10, decimal_places=2)",
+        "detail": "stock_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "LigneCommande",
+        "kind": 6,
+        "importPath": "stock_app.models",
+        "description": "stock_app.models",
+        "peekOfCode": "class LigneCommande(models.Model):\n    id_commande = models.ForeignKey(Commande, on_delete=models.CASCADE)\n    id_produit = models.ForeignKey('Produit', on_delete=models.CASCADE)\n    quantite = models.IntegerField()\n    montant_ligne_cmd = models.DecimalField(max_digits=10, decimal_places=2)\nclass Produit(models.Model):\n    id_produit = models.AutoField(primary_key=True)\n    nom_produit = models.CharField(max_length=255)\n    description = models.TextField()\n    prix_achat = models.DecimalField(max_digits=10, decimal_places=2)",
+        "detail": "stock_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Produit",
+        "kind": 6,
+        "importPath": "stock_app.models",
+        "description": "stock_app.models",
+        "peekOfCode": "class Produit(models.Model):\n    id_produit = models.AutoField(primary_key=True)\n    nom_produit = models.CharField(max_length=255)\n    description = models.TextField()\n    prix_achat = models.DecimalField(max_digits=10, decimal_places=2)\n    prix_vente = models.DecimalField(max_digits=10, decimal_places=2)\n    qte_stock = models.IntegerField()",
+        "detail": "stock_app.models",
         "documentation": {}
     },
     {
