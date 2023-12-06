@@ -70,9 +70,10 @@ Un suivi régulier du projet sera effectué pour s'assurer que les objectifs son
 
 Ce cahier des charges définit les grandes lignes du projet pour le développement de l'application Django de gestion   des boutiques de Mm Amoudia . 
 
-![Diagramme de classe amoudia](https://github.com/tchabana/amoudia_project/assets/122261458/1b132319-e6a9-48fa-bfe9-f6ad8787ed0d)
+![Diagramme de classe amoudia](https://github.com/tchabana/amoudia_project/assets/122261458/df4432f4-b7eb-49ac-972f-a981a0464df6)
 
 
+## Model Relationnel
 1. **Personne:**
     
     - `id_personne` (clé primaire)
