@@ -24,11 +24,11 @@ class Commande(models.Model):
 
 class Achat(Commande):
     id_achat = models.AutoField(primary_key=True)
-    id_personne = models.ForeignKey(Personne, on_delete=models.CASCADE)
+    id_fournisseur = models.ForeignKey(Personne, on_delete=models.CASCADE)
 
 class Vente(Commande):
     id_vente = models.AutoField(primary_key=True)
-    id_personne = models.ForeignKey(Personne, on_delete=models.CASCADE)
+    id_client = models.ForeignKey(Personne, on_delete=models.CASCADE)
 
 class Paiement(models.Model):
     id_paiement = models.AutoField(primary_key=True)

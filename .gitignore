@@ -1,2 +1,5 @@
-.env
 /.vscode
+/stock_app/__pycache__/*
+/amoudia_project/__pycache__/*
+/stock_app/migrations/*
+.env

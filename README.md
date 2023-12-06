@@ -125,3 +125,16 @@ Ce cahier des charges définit les grandes lignes du projet pour le développeme
     - `prix_achat`
     - `prix_vente`
     - `qte_stock`
+
+
+## Potentiels Erreurs
+
+```bash
+ note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for psycopg2
+  Running setup.py clean for psycopg2
+Failed to build psycopg2
+ERROR: Could not build wheels for psycopg2, which is required to install pyproject.toml-based projects
+```
+- Assurez-vous que les dépendances système nécessaires sont installées pour psycopg2
+`sudo apt-get install libpq-dev python3-dev`
